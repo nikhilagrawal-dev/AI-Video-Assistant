@@ -31,6 +31,16 @@ def download_youtube_audio(url :str) ->str:
         # so it suppress most of that output.
         "quiet": True,
     }
+
+    try:
+        import deno
+        ydl_opts["js_runtimes"] = {
+            "deno": {
+                "path": deno.find_deno_bin()
+            }
+        }
+    except ImportError:
+        pass
     #Creating the YouTube downloader
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         #Extract information and download
