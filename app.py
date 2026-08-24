@@ -461,6 +461,9 @@ if run_btn:
             update_step("transcript", "active")
             transcript = transcribe_all(chunks, language)
             update_step("transcript", "done")
+            
+            if not transcript.strip():
+                raise ValueError("No speech was detected in the uploaded file. Please upload a video/audio file containing spoken content.")
 
             update_step("title", "active")
             title = generate_title(transcript)

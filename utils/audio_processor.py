@@ -54,21 +54,20 @@ def download_youtube_audio(url :str) ->str:
 # This handles local files instead of YouTube URLs.
 def convert_to_wav(input_path: str) -> str:
 
-    """Convert any audio/video file to WAV format using pydub."""
+    """Convert any audio/video file to WAV format using FFmpeg."""
 
-    #Create output filename._converted.wav
+    import subprocess
     output_path = os.path.splitext(input_path)[0] + "_converted.wav"
 
-    #Pydub loads the audio/video file.
-    # AudioSegment detects the typs of file
-    audio = AudioSegment.from_file(input_path)
+    try:
+        subprocess.run([
+            "ffmpeg", "-y", "-i", input_path, 
+            "-vn", "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1", 
+            output_path
+        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"FFmpeg conversion failed for {input_path}") from e
 
-    #Convert to mono and 16 kHz
-    # set_channels(1) converts the audio to mono. and 16 kHz is a common sample rate for speech-processing systems.
-    audio = audio.set_channels(1).set_frame_rate(16000) 
-
-    #Export WAV
-    audio.export(output_path, format="wav")
     return output_path
 
 
