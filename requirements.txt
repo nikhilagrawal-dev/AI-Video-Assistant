@@ -153,3 +153,4 @@ xxhash==4.0.1
 yarl==1.24.5
 yt-dlp[default]==2026.8.19
 zstandard==0.25.0
+deno
