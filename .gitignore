@@ -1,9 +1,13 @@
+# Environment
 .env
 venv/
 .venv/
+
+# Python
 __pycache__/
 *.pyc
 
+# Downloads / generated media
 downloads/
 downloades/
 
@@ -12,7 +16,13 @@ downloades/
 *.mp4
 *.webm
 *.m4a
+*.aiff
 
+# macOS
 .DS_Store
 
+# Vector database
 vector_db/
+
+# ML / model-generated files
+torchvision/
