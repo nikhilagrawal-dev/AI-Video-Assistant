@@ -1,5 +1,6 @@
 import yt_dlp               ##Take a YouTube URL → download its audio.
-from pydub import AudioSegment         ## AudioSegment
+## AudioSegment
+from pydub import AudioSegment        
 import os
 
 DOWNLOAD_DIR = 'downloade'           ##the folder where downloaded audio will be stored.

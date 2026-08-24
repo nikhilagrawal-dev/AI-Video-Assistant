@@ -14,3 +14,5 @@ downloades/
 *.m4a
 
 .DS_Store
+
+vector_db/

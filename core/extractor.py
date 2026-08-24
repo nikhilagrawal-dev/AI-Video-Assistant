@@ -14,7 +14,7 @@ def build_chain(system_prompt : str):
     llm = get_llm()
 
     return(
-        RunnablePassthrough | RunnableLambda(lambda x : {"text" : x}) | ChatPromptTemplate.from_messages(
+        RunnablePassthrough() | RunnableLambda(lambda x : {"text" : x}) | ChatPromptTemplate.from_messages(
             [
                  ("system", system_prompt),
                  ("human","{text}"),
