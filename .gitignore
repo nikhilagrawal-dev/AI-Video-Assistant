@@ -25,4 +25,4 @@ downloades/
 vector_db/
 
 # ML / model-generated files
-torchvision/
+torchvision/temp_uploads/
